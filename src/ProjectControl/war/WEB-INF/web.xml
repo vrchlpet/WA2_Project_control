@@ -13,6 +13,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/projectcontrol</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>Tasks</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.TasksServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tasks</servlet-name>	
+		<url-pattern>/tasks</url-pattern>		
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Teams</servlet-name>
 		<servlet-class>org.cvut.wa2.projectcontrol.TeamsServlet</servlet-class>
 	</servlet>
