@@ -17,7 +17,7 @@ public class ProjectControlServlet extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
-		if ( user != null) {
+		if ( user == null) {
 			resp.sendRedirect("/LogIn.jsp");
 		} else {
 			resp.sendRedirect("/TeamsTask.jsp");

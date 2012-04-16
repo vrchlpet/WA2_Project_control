@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	You are not logged in. <a href="LogIn">log in</a>.
+	You are not logged in. <a href="/login">log in</a>.
 
 
 </body>

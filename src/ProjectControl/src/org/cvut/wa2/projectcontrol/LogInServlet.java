@@ -14,10 +14,9 @@ public class LogInServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		
-		
-		
-		resp.setContentType("text/plain");		
-		resp.getWriter().println("You have been logged in");
+		UserService userService = UserServiceFactory.getUserService();
+        resp.sendRedirect(userService.createLoginURL("http://vrchlpet-projectcontrol.appspot.com"));
+
 	}
 
 }
