@@ -1,6 +1,8 @@
 package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import com.google.appengine.api.users.User;
@@ -21,4 +23,11 @@ public class ProjectControlServlet extends HttpServlet {
 			resp.sendRedirect("/TeamsTask.jsp");
 		}
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doGet(req, resp);
+	}
+	
 }
