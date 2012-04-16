@@ -20,7 +20,6 @@ public class TeamsServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		super.doGet(req, resp);
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
 		if(user!= null){
