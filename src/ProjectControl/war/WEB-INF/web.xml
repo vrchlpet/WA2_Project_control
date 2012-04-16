@@ -12,7 +12,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ProjectControl</servlet-name>
 		<url-pattern>/projectcontrol</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+		<servlet-name>Teams</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.TeamsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Teams</servlet-name>
+		<url-pattern>/teams</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>LogIn</servlet-name>
 		<servlet-class>org.cvut.wa2.projectcontrol.LogInServlet</servlet-class>
