@@ -1,6 +1,5 @@
 package org.cvut.wa2.projectcontrol.entities;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -9,9 +8,8 @@ import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
 public class AccessToken {
-
+	
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key accessTokenKey;
 	
 	@Persistent
@@ -22,13 +20,15 @@ public class AccessToken {
 
 	public AccessToken() {}
 	
-	public AccessToken(Key accessTokenKey, TokenType tokenType, String tokenText) {
+	public AccessToken(Key key, TokenType tokenType, String tokenText) {
 		super();
-		this.accessTokenKey = accessTokenKey;
+		this.accessTokenKey = key;
 		this.tokenType = tokenType;
 		this.tokenText = tokenText;
 	}
 
+	
+	
 	public Key getAccessTokenKey() {
 		return accessTokenKey;
 	}
