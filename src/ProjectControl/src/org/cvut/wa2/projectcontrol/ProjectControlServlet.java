@@ -82,10 +82,13 @@ public class ProjectControlServlet extends HttpServlet {
 			pm.makePersistent(ct);
 			pm.makePersistent(t1);
 			pm.makePersistent(t2);
-			
+			CompositeTask compTask =pm.getObjectById(CompositeTask.class, "Compositetask1");
+			String str = compTask.getOwner();
+			System.err.println("Owner is: "+ str);
 		} finally {
 			pm.close();
 		}
+		
 
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

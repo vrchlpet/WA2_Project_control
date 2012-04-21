@@ -15,7 +15,7 @@ import com.google.appengine.api.datastore.Key;
 public class Task {
 	
 	@PrimaryKey
-	private Key taskKey;
+	protected Key taskKey;
 	
 	@Persistent
 	private String taskName;
