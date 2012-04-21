@@ -30,16 +30,25 @@ public class TeamsServlet extends HttpServlet{
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
 		if(user!= null){
-			DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
-			Query q  = pm.newQuery(Team.class);
+			Query q  = pm.newQuery("select from Team");
 			q.setOrdering("name desc");
+			
 			try {
-				List<Team> listOfTeams = (List<Team>) q.execute();
-				req.setAttribute("teams", listOfTeams);
+				
 				RequestDispatcher disp = req.getRequestDispatcher("Teams.jsp");
-				disp.forward(req, resp);
-			} finally {
+				Object listOfTeams = q.execute();
+				if (listOfTeams != null){
+					List<Team> list = (List<Team>) listOfTeams;
+					req.setAttribute("teams", list);
+					disp.forward(req, resp);
+				}else{
+					disp.forward(req, resp);
+				}
+				
+			} catch (Exception e){
+				e.printStackTrace();
+			}finally {
 				q.closeAll();
 			}
 		}
