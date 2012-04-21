@@ -55,6 +55,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>CreateTask</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.CreateTaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateTask</servlet-name>
+		<url-pattern>/createtask</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>AddMember</servlet-name>
 		<servlet-class>org.cvut.wa2.projectcontrol.AddMemberServlet</servlet-class>
 	</servlet>

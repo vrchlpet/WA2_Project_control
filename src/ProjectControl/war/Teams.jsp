@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Teams view</title>
 </head>
 <body>
 <%
@@ -51,6 +51,5 @@
 
 
 <a href="/TeamsTask.jsp">Back</a>
-<a href="/CreateTeam.jsp">Create Team</a>
 </body>
 </html>

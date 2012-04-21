@@ -2,6 +2,7 @@ package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,8 @@ public class TasksServlet extends HttpServlet{
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
 		if(user!= null){
-			
+			RequestDispatcher disp = req.getRequestDispatcher("CreateTask.jsp");
+			disp.forward(req, resp);
 		}
 		else{
 			resp.sendRedirect("/projectcontrol");
