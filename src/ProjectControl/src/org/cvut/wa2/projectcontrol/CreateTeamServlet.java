@@ -37,9 +37,9 @@ public class CreateTeamServlet extends HttpServlet {
 				PersistenceManager manager = PMF.get().getPersistenceManager();
 				Team team = null;
 				try {
+					team = manager.getObjectById(Team.class, teamName);
 					disp.forward(req, resp);
 				} catch (JDOObjectNotFoundException e) {
-					team = manager.getObjectById(Team.class, teamName);
 					Team newTeam = new Team();
 					newTeam.setTeamKey(KeyFactory.createKey(
 							Team.class.getSimpleName(), teamName));
