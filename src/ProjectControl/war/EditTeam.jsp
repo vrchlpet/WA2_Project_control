@@ -28,9 +28,6 @@
 		<td>
 			<%=member.getName() %>
 		</td>
-		<td>
-			<button action="EditMember.jsp" value="<%=member%>" name="member">Edit</button>
-		</td>
 	</tr>
 	
 
@@ -39,9 +36,10 @@
 	%>
 	<tr>
 		<td>
-		</td>
-		<td>
-			<button action="AddNewMebeber.jsp" value"<%=team.getName()%> name="teamName">Add</button>
+			<form action="/addmember" method="POST">
+			<input type="hidden" name="teamName" value="<%=team.getName()%>">
+			<button action="submit">Add</button>
+		</form>
 		</td>
 	</table>
 </body>
