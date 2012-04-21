@@ -23,11 +23,26 @@ public class Task {
 	@Persistent
 	protected Date dateOfStartDelivery;
 	
+	public TeamMember getTeamMemberOwner() {
+		return teamMemberOwner;
+	}
+
+
+
+	public void setTeamMemberOwner(TeamMember teamMemberOwner) {
+		this.teamMemberOwner = teamMemberOwner;
+	}
+
+
+
 	@Persistent
 	protected String docLink;
 	
 	@Persistent
-	private Status taskStatus;
+	protected Status taskStatus;
+	
+	@Persistent
+	protected TeamMember teamMemberOwner;
 
 
 	
@@ -36,8 +51,9 @@ public class Task {
 
 
 	public Task(Key taskKey, String taskName, Date dateOfStartDelivery, String docLink,
-			Status taskStatus) {
+			Status taskStatus, TeamMember teamMemberOwner) {
 		super();
+		this.teamMemberOwner = teamMemberOwner;
 		this.taskName = taskName;
 		this.taskKey = taskKey;
 		this.dateOfStartDelivery = dateOfStartDelivery;

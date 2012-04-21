@@ -21,18 +21,32 @@ public class TeamMember {
 	
 	@Persistent
 	private ArrayList<AccessToken> accessTokens;
+	
+	@Persistent(mappedBy="teamMemberOwner")
+	private ArrayList<Task> tasks;
 
 
 	public TeamMember() {}
 	
 	
 	public TeamMember(Key teamMemberKey, Team team, String name,
-			ArrayList<AccessToken> accessTokens) {
+			ArrayList<AccessToken> accessTokens, ArrayList<Task> tasks) {
 		super();
+		this.tasks = tasks;
 		this.teamMemberKey = teamMemberKey;
 		this.team = team;
 		this.name = name;
 		this.accessTokens = accessTokens;
+	}
+
+
+	public ArrayList<Task> getTasks() {
+		return tasks;
+	}
+
+
+	public void setTasks(ArrayList<Task> tasks) {
+		this.tasks = tasks;
 	}
 
 
