@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Teams view</title>
 </head>
 <body>
 <%
@@ -28,7 +28,10 @@
 			<%=team.getName() %>
 		</td>
 		<td>
-			<button action="EditTeam.jsp" value="<%=team.getName()%>" name="teamName">Edit</button>
+		<form action="/editteam" method="POST">
+			<input type="hidden" name="teamName" value="<%=team.getName()%>">
+			<button action="submit">Edit</button>
+		</form>
 		</td>
 	</tr>
 	
@@ -40,12 +43,13 @@
 		<td>
 		</td>
 		<td>
-			<button action="CreateTeam.jsp">Add</button>
+		<form action="/CreateTeam.jsp" method="POST">
+			<button action="submit">Add</button>
+		</form>
 		</td>
 	</table>
 
 
 <a href="/TeamsTask.jsp">Back</a>
-<a href="/CreateTeam.jsp">Create Team</a>
 </body>
 </html>

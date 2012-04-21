@@ -2,13 +2,12 @@ package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -23,8 +22,8 @@ public class TasksServlet extends HttpServlet{
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
 		if(user!= null){
-			DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-			
+			RequestDispatcher disp = req.getRequestDispatcher("CreateTask.jsp");
+			disp.forward(req, resp);
 		}
 		else{
 			resp.sendRedirect("/projectcontrol");

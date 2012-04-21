@@ -1,10 +1,7 @@
 package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
-import javax.jdo.PersistenceManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 

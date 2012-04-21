@@ -15,8 +15,6 @@ import org.cvut.wa2.projectcontrol.DAO.PMF;
 import org.cvut.wa2.projectcontrol.entities.Team;
 import org.cvut.wa2.projectcontrol.entities.TeamMember;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -47,7 +45,7 @@ public class CreateTeamServlet extends HttpServlet {
 					newTeam.setMembers(new ArrayList<TeamMember>());
 					manager.makePersistent(newTeam);
 					req.setAttribute("team", newTeam);
-					disp = req.getRequestDispatcher("/teams");
+					disp = req.getRequestDispatcher("EditTeam.jsp");
 					disp.forward(req, resp);
 				}
 			}
