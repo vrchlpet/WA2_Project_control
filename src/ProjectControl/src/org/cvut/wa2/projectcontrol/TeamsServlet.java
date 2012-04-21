@@ -31,7 +31,7 @@ public class TeamsServlet extends HttpServlet{
 		User user = service.getCurrentUser();
 		if(user!= null){
 			PersistenceManager pm = PMF.get().getPersistenceManager();
-			Query q  = pm.newQuery("select from Team");
+			Query q  = pm.newQuery(Team.class);
 			q.setOrdering("name desc");
 			
 			try {
