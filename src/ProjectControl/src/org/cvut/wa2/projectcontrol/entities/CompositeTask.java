@@ -9,7 +9,7 @@ import javax.jdo.annotations.Persistent;
 public class CompositeTask extends Task {
 	
 	@Persistent
-	private String owner;
+	private Team owner;
 	
 	@Persistent
 	private String responsible;
@@ -19,7 +19,7 @@ public class CompositeTask extends Task {
 
 	public CompositeTask() {}
 	
-	public CompositeTask(String owner, String responsible,
+	public CompositeTask(Team owner, String responsible,
 			ArrayList<Task> subtasks) {
 		super();
 		this.owner = owner;
@@ -27,11 +27,11 @@ public class CompositeTask extends Task {
 		this.subtasks = subtasks;
 	}
 
-	public String getOwner() {
+	public Team getOwner() {
 		return owner;
 	}
 
-	public void setOwner(String owner) {
+	public void setOwner(Team owner) {
 		this.owner = owner;
 	}
 
