@@ -3,6 +3,7 @@ package org.cvut.wa2.projectcontrol;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,35 +22,36 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public class CreateTeamServlet extends HttpServlet{
+public class CreateTeamServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
-		if(user!= null){
+		if (user != null) {
 			String teamName = req.getParameter("teamName");
 			RequestDispatcher disp = req.getRequestDispatcher("CreateTeam.jsp");
-			if (teamName.trim().equals("")){
+			if (teamName.trim().equals("")) {
 				disp.forward(req, resp);
-			}else{
+			} else {
 				PersistenceManager manager = PMF.get().getPersistenceManager();
-				Team team = manager.getObjectById(Team.class, teamName);
-				if(team == null){
+				Team team = null;
+				try {
+					team = manager.getObjectById(Team.class, teamName);
 					Team newTeam = new Team();
-					newTeam.setTeamKey(KeyFactory.createKey(Team.class.getSimpleName(), teamName));
+					newTeam.setTeamKey(KeyFactory.createKey(
+							Team.class.getSimpleName(), teamName));
 					newTeam.setName(teamName);
 					newTeam.setMembers(new ArrayList<TeamMember>());
 					manager.makePersistent(newTeam);
 					req.setAttribute("team", newTeam);
 					disp = req.getRequestDispatcher("EditTeam.jsp");
 					disp.forward(req, resp);
-				}else{
+				} catch (JDOObjectNotFoundException e) {
 					disp.forward(req, resp);
 				}
 			}
-		}
-		else{
+		} else {
 			resp.sendRedirect("/projectcontrol");
 		}
 	}
@@ -59,5 +61,5 @@ public class CreateTeamServlet extends HttpServlet{
 			throws ServletException, IOException {
 		doGet(req, resp);
 	}
-	
+
 }
