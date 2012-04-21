@@ -37,6 +37,8 @@ public class CreateTeamServlet extends HttpServlet {
 				PersistenceManager manager = PMF.get().getPersistenceManager();
 				Team team = null;
 				try {
+					disp.forward(req, resp);
+				} catch (JDOObjectNotFoundException e) {
 					team = manager.getObjectById(Team.class, teamName);
 					Team newTeam = new Team();
 					newTeam.setTeamKey(KeyFactory.createKey(
@@ -46,8 +48,6 @@ public class CreateTeamServlet extends HttpServlet {
 					manager.makePersistent(newTeam);
 					req.setAttribute("team", newTeam);
 					disp = req.getRequestDispatcher("EditTeam.jsp");
-					disp.forward(req, resp);
-				} catch (JDOObjectNotFoundException e) {
 					disp.forward(req, resp);
 				}
 			}
