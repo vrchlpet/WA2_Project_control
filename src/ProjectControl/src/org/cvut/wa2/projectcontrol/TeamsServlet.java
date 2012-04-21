@@ -30,24 +30,18 @@ public class TeamsServlet extends HttpServlet{
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
 		if(user!= null){
-			RequestDispatcher disp = req.getRequestDispatcher("CreateTeam.jsp");
-			disp.forward(req, resp);
-			
-			
-			
-			
-//			DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-//			PersistenceManager pm = PMF.get().getPersistenceManager();
-//			Query q  = pm.newQuery(Team.class);
-//			q.setOrdering("name desc");
-//			try {
-//				List<Team> listOfTeams = (List<Team>) q.execute();
-//				for (Team team : listOfTeams) {
-//					System.out.println(team.getName());
-//				}
-//			} finally {
-//			
-//			}
+			DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			Query q  = pm.newQuery(Team.class);
+			q.setOrdering("name desc");
+			try {
+				List<Team> listOfTeams = (List<Team>) q.execute();
+				req.setAttribute("teams", listOfTeams);
+				RequestDispatcher disp = req.getRequestDispatcher("Teams.jsp");
+				disp.forward(req, resp);
+			} finally {
+				q.closeAll();
+			}
 		}
 		else{
 			resp.sendRedirect("/projectcontrol");
