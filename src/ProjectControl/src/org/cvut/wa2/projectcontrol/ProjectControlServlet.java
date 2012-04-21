@@ -17,6 +17,68 @@ import org.cvut.wa2.projectcontrol.entities.Team;
 import org.cvut.wa2.projectcontrol.entities.TeamMember;
 import org.cvut.wa2.projectcontrol.entities.TokenType;
 
+import javax.servlet.RequestDispatcher;
+
+
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
+public class ProjectControlServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		RequestDispatcher reqDisp;
+		
+		try {
+			if (user == null) {
+				reqDisp = req.getRequestDispatcher("LogIn.jsp");
+				reqDisp.forward(req, resp);
+			} else {
+				reqDisp = req.getRequestDispatcher("TeamsTask.jsp");
+				reqDisp.forward(req, resp);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doGet(req, resp);
+	}
+
+}
+
+
+
+/*
+
+package org.cvut.wa2.projectcontrol;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.jdo.PersistenceManager;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+
+import org.cvut.wa2.projectcontrol.DAO.PMF;
+import org.cvut.wa2.projectcontrol.entities.AccessToken;
+import org.cvut.wa2.projectcontrol.entities.CompositeTask;
+import org.cvut.wa2.projectcontrol.entities.Status;
+import org.cvut.wa2.projectcontrol.entities.Task;
+import org.cvut.wa2.projectcontrol.entities.Team;
+import org.cvut.wa2.projectcontrol.entities.TeamMember;
+import org.cvut.wa2.projectcontrol.entities.TokenType;
+
+import javax.servlet.RequestDispatcher;
+
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
@@ -28,7 +90,11 @@ public class ProjectControlServlet extends HttpServlet {
 			throws IOException {
 
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-
+		RequestDispatcher reqDisp = req
+				.getRequestDispatcher("TeamsTask.jsp");
+		
+		
+		
 		try {
 			Team team = new Team();
 			team.setName("Team2");
@@ -83,6 +149,17 @@ public class ProjectControlServlet extends HttpServlet {
 			pm.makePersistent(t1);
 			pm.makePersistent(t2);
 			
+			CompositeTask compTask =pm.getObjectById(CompositeTask.class, "Compositetask1");
+			Task t = compTask.getSubtasks().get(0);
+			String str = compTask.getDocLink();
+			req.setAttribute("user",t.getDocLink());
+			try {
+				reqDisp.forward(req, resp);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		} finally {
 			pm.close();
 		}
@@ -105,3 +182,7 @@ public class ProjectControlServlet extends HttpServlet {
 	}
 
 }
+
+
+ * */
+

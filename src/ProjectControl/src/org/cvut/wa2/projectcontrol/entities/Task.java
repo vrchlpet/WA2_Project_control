@@ -15,16 +15,16 @@ import com.google.appengine.api.datastore.Key;
 public class Task {
 	
 	@PrimaryKey
-	private Key taskKey;
+	protected Key taskKey;
 	
 	@Persistent
-	private String taskName;
+	protected String taskName;
 	
 	@Persistent
-	private Date dateOfStartDelivery;
+	protected Date dateOfStartDelivery;
 	
 	@Persistent
-	private String docLink;
+	protected String docLink;
 	
 	@Persistent
 	private Status taskStatus;
