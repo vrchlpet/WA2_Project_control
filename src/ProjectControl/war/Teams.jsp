@@ -40,7 +40,7 @@
 		<td>
 		</td>
 		<td>
-			<button action="AddNewTeam.jsp">Add</button>
+			<button action="CreateTeam.jsp">Add</button>
 		</td>
 	</table>
 
