@@ -1,5 +1,6 @@
 <%@page import="org.cvut.wa2.projectcontrol.entities.Team"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Collection"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,7 +12,7 @@
 </head>
 <body>
 <%
-		List<Team> listOfTeams = (ArrayList<Team>) request.getAttribute("teams");
+		Collection<Team> listOfTeams = (Collection<Team>) request.getAttribute("teams");
 	%>
 	<h1>
 		<label>Teams View</label>

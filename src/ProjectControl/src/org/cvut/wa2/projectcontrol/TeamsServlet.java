@@ -20,7 +20,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public class TeamsServlet extends HttpServlet{
+public class TeamsServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -2505608701798341438L;
 
@@ -29,35 +29,26 @@ public class TeamsServlet extends HttpServlet{
 			throws ServletException, IOException {
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
-		if(user!= null){
+		if (user != null) {
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			Query q  = pm.newQuery(Team.class);
-			q.setOrdering("name desc");
 			
 			try {
-				
+
 				RequestDispatcher disp = req.getRequestDispatcher("Teams.jsp");
-				Object listOfTeams = q.execute();
-				if (listOfTeams != null){
-					List<Team> list = (List<Team>) listOfTeams;
-					req.setAttribute("teams", list);
-					disp.forward(req, resp);
-				}else{
-					disp.forward(req, resp);
-				}
-				
-			} catch (Exception e){
+				List<Team> list = (List<Team>) q.execute();
+				req.setAttribute("teams", list);
+				disp.forward(req, resp);
+
+			} catch (Exception e) {
 				e.printStackTrace();
-			}finally {
+			} finally {
 				q.closeAll();
 			}
-		}
-		else{
+		} else {
 			resp.sendRedirect("/projectcontrol");
 		}
-		
+
 	}
-
-
 
 }
