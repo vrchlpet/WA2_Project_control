@@ -30,4 +30,11 @@ public class TasksServlet extends HttpServlet{
 			resp.sendRedirect("/projectcontrol");
 		}
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doGet(req, resp);
+	}
+	
 }
