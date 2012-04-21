@@ -47,7 +47,7 @@ public class CreateTeamServlet extends HttpServlet {
 					newTeam.setMembers(new ArrayList<TeamMember>());
 					manager.makePersistent(newTeam);
 					req.setAttribute("team", newTeam);
-					disp = req.getRequestDispatcher("EditTeam.jsp");
+					disp = req.getRequestDispatcher("/teams");
 					disp.forward(req, resp);
 				}
 			}
