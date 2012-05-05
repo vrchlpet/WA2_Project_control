@@ -110,6 +110,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/addtask</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>AddDocumentsServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.AddDocumentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddDocumentsServlet</servlet-name>
+		<url-pattern>/adddoc</url-pattern>
+	</servlet-mapping>
 	
 	
 	<welcome-file-list>

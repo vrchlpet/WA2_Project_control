@@ -67,18 +67,25 @@ public class AddDocumentsServlet extends HttpServlet {
 													"https://spreadsheets.google.com/feeds/spreadsheets/private/full"),
 											SpreadsheetFeed.class);
 							listOfEntries = feed.getEntries();
-							List<DocumentEntity> listOfDocumentEntities = new ArrayList<DocumentEntity>();;
-							if (listOfEntries.size() == 0) {
-//								TODO
-							}else{
+							List<DocumentEntity> listOfDocumentEntities = new ArrayList<DocumentEntity>();
+							;
+							req.setAttribute("taskName", taskName);
+							if (listOfEntries.size() != 0) {
 								DocumentEntity entity = null;
 								for (SpreadsheetEntry entry : listOfEntries) {
 									entity = new DocumentEntity();
-									entity.setDocName(entry.getTitle().getPlainText());
-									entity.setHref(entry.getHtmlLink().getHref());
+									entity.setDocName(entry.getTitle()
+											.getPlainText());
+									entity.setHref(entry.getHtmlLink()
+											.getHref());
 									listOfDocumentEntities.add(entity);
+
 								}
 							}
+							req.setAttribute("listOfEntities",
+									listOfDocumentEntities);
+							disp = req.getRequestDispatcher("AddDocs.jsp");
+							disp.forward(req, resp);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
