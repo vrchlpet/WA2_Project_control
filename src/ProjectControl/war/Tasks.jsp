@@ -22,7 +22,7 @@
 				<td>${item.taskName}</td><td>${item.owner}</td>
 				<td>
 						<form action="/adddoc" method="POST">
-							<input type="hidden" name="taskName" value="${item.taskName} }">
+							<input type="hidden" name="taskName" value="${item.taskName}">
 							<button action="submit">Edit</button>
 						</form>
 				</td>

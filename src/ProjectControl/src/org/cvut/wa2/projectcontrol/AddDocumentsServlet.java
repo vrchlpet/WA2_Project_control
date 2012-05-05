@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cvut.wa2.projectcontrol.DAO.PMF;
+import org.cvut.wa2.projectcontrol.DAO.TaskDAO;
+import org.cvut.wa2.projectcontrol.entities.CompositeTask;
 import org.cvut.wa2.projectcontrol.entities.DocumentEntity;
 import org.cvut.wa2.projectcontrol.entities.DocumentsToken;
 import org.cvut.wa2.projectcontrol.entities.Task;
@@ -46,7 +48,7 @@ public class AddDocumentsServlet extends HttpServlet {
 				String taskName = req.getParameter("taskName");
 				if (taskName != null) {
 					PersistenceManager manager = PMF.get();
-					Task task = manager.getObjectById(Task.class, taskName);
+					CompositeTask task = TaskDAO.getTask(taskName);
 					if (task != null) {
 						GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
 						oauthParameters.setOAuthConsumerKey("anonymous");
