@@ -29,10 +29,7 @@ public class TaskDAO {
 		List<CompositeTask> tasks = null;
 		
 		try {
-			
-			
-			PersistenceManager manager = PMF.get().getPersistenceManager();
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get();
 			q  = pm.newQuery(CompositeTask.class);
 			tasks = (List<CompositeTask>) q.execute();
 		
@@ -60,20 +57,34 @@ public class TaskDAO {
 		Key key3 = KeyFactory.createKey(CompositeTask.class.getSimpleName(),taskName);
 		
 		CompositeTask ct = new CompositeTask();
-		ct.setDateOfStartDelivery(dateOfStartDelivery);
-		ct.setDocLink("");
-		ct.setOwner(team);
+		ct.setOwner(team.getName());
 		ct.setSubtasks(new ArrayList<Task>());
-		ct.setTaskKey(key3);
 		ct.setTaskName(taskName);
-		ct.setTaskStatus(Status.processing);
-		ct.setTaskOwner(owner);
+		ct.setDateOfStartDelivery(dateOfStartDelivery);
 		
-		PersistenceManager manager = PMF.get().getPersistenceManager();
+		PersistenceManager manager = PMF.get();
 		manager.makePersistent(ct);
 		
 		return ct;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

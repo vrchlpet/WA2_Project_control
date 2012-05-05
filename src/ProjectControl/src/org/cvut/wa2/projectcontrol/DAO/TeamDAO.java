@@ -23,7 +23,7 @@ public class TeamDAO {
 		Query q = null;
 		try {
 
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get();
 			q  = pm.newQuery(Team.class);
 			List<Team> list = (List<Team>) q.execute();
 			return list;
@@ -33,7 +33,7 @@ public class TeamDAO {
 	}
 	
 	public static boolean updateTeam(Team team) {
-		PersistenceManager manager = PMF.get().getPersistenceManager();
+		PersistenceManager manager = PMF.get();
 		
 		manager.makePersistent(team);
 		
@@ -42,7 +42,7 @@ public class TeamDAO {
 	
 	
 	public static Team getTeam(String teamName) {
-		PersistenceManager manager = PMF.get().getPersistenceManager();
+		PersistenceManager manager = PMF.get();
 		
 		if (teamName == null) return null;
 		
@@ -82,7 +82,7 @@ public class TeamDAO {
 		Key key1 = KeyFactory.createKey(Team.class.getSimpleName(),teamName);
 		team.setTeamKey(key1);
 		
-		PersistenceManager manager = PMF.get().getPersistenceManager();
+		PersistenceManager manager = PMF.get();
 		manager.makePersistent(team);
 		
 		return true;

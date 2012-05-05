@@ -41,7 +41,7 @@ public class SaveMemberServlet extends HttpServlet {
 			int contactsCount = Integer.parseInt(req.getParameter("contactsCount"));
 			
 			
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get();
 			Team team = pm.getObjectById(Team.class, teamName);
 			
 			

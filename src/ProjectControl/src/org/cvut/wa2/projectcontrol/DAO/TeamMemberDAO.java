@@ -38,7 +38,7 @@ public class TeamMemberDAO {
 		tm.setTasks(new ArrayList<Task>());
 		tm.setTeam(team);
 		
-		PersistenceManager manager = PMF.get().getPersistenceManager();
+		PersistenceManager manager = PMF.get();
 		manager.makePersistent(tm);
 		
 		team.getMembers().add(tm);
