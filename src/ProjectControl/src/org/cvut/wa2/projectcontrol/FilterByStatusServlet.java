@@ -25,23 +25,27 @@ public class FilterByStatusServlet extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		RequestDispatcher disp = null;
 		if (userService.isUserLoggedIn()) {
-			String status = (String) req.getAttribute("statusdropdown");
+			String status = (String) req.getParameter("statusdropdown");
 			List<CompositeTask> listOfTask = TaskDAO.getTasks();
 			List<CompositeTask> toReturn = new ArrayList<CompositeTask>();
 			if (status.equals(Status.finished)) {
 				for (CompositeTask compositeTask : listOfTask) {
-					if (areAllSubtasksFinished(compositeTask)) {
-						toReturn.add(compositeTask);
+					if (compositeTask.getSubtasks().size() != 0) {
+						if (areAllSubtasksFinished(compositeTask)) {
+							toReturn.add(compositeTask);
+						}
 					}
 				}
-			}else{
+			} else {
 				for (CompositeTask compositeTask : listOfTask) {
-					if(!areAllSubtasksFinished(compositeTask)){
-						toReturn.add(compositeTask);
+					if (compositeTask.getSubtasks().size() != 0) {
+						if (!areAllSubtasksFinished(compositeTask)) {
+							toReturn.add(compositeTask);
+						}
 					}
 				}
 			}
-			disp= req.getRequestDispatcher("/Tasks.jsp");
+			disp = req.getRequestDispatcher("Tasks.jsp");
 			req.setAttribute("listOfTasks", toReturn);
 			disp.forward(req, resp);
 		} else {

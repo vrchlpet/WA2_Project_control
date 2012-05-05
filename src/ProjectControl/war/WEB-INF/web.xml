@@ -110,6 +110,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>FilterByAccountServlet</servlet-name>
 		<url-pattern>/filterbyacc</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FilterByStatusServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.FilterByStatusServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilterByStatusServlet</servlet-name>
+		<url-pattern>/filterbystatus</url-pattern>
+	</servlet-mapping>
+
 	
 	
 	<servlet>
