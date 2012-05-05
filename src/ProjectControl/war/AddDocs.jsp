@@ -15,7 +15,7 @@
 	
 		<c:forEach var="item" items="${listOfEntities}">
 			
-			 <input type="checkbox" name="con<%= i %>" value="${item.docName}"  /> <a href="${item.href}">${item.docName}</a><br />
+			 <input type="checkbox" name="doc<%= i %>" value="${item.docName}"  /> <a href="${item.href}">${item.docName}</a><br />
 			<input type="hidden" name="href<%=i++%>" value="${item.href}"/>	   	
 	   	</c:forEach>
 	   	<input type="hidden" name="taskName"  value="${taskName}" />

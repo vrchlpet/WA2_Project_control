@@ -130,6 +130,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/adddoc</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>RemoveTaskServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.RemoveTaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveTaskServlet</servlet-name>
+		<url-pattern>/removetask</url-pattern>
+	</servlet-mapping>
+	
+	
 	
 	<welcome-file-list>
 		<welcome-file>ProjectControl</welcome-file>

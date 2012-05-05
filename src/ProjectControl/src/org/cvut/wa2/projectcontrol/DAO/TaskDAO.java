@@ -75,6 +75,23 @@ public class TaskDAO {
 	}
 	
 	
+	public static DocumentEntity getDoc(String docName) {
+		DocumentEntity de = null;
+		
+		PersistenceManager pm = PMF.get();
+		Key key1 = KeyFactory.createKey(DocumentEntity.class.getSimpleName(),docName);
+		
+		try {
+			de = pm.getObjectById(DocumentEntity.class, key1);
+		} catch (JDOObjectNotFoundException e) {
+			return null;
+		}
+		
+		
+		return de;
+	}
+	
+	
 	public static DocumentEntity addDoc(String taskName, String docName, String href) {
 		
 		DocumentEntity de = null;
