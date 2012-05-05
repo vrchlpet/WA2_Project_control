@@ -12,14 +12,14 @@ public class CompositeTask extends Task {
 	private Team owner;
 	
 	@Persistent
-	private String responsible;
+	private TeamMember responsible;
 	
 	@Persistent
 	private ArrayList<Task> subtasks;
 
 	public CompositeTask() {}
 	
-	public CompositeTask(Team owner, String responsible,
+	public CompositeTask(Team owner, TeamMember responsible,
 			ArrayList<Task> subtasks) {
 		super();
 		this.owner = owner;
@@ -35,11 +35,11 @@ public class CompositeTask extends Task {
 		this.owner = owner;
 	}
 
-	public String getResponsible() {
+	public TeamMember getResponsible() {
 		return responsible;
 	}
 
-	public void setResponsible(String responsible) {
+	public void setResponsible(TeamMember responsible) {
 		this.responsible = responsible;
 	}
 
