@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cvut.wa2.projectcontrol.DAO.PMF;
+import org.cvut.wa2.projectcontrol.DAO.TeamDAO;
 import org.cvut.wa2.projectcontrol.entities.Team;
 
 import com.google.appengine.api.users.User;
@@ -28,21 +29,10 @@ public class TeamsServlet extends HttpServlet {
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
 		if (user != null) {
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			Query q  = pm.newQuery(Team.class);
-			
-			try {
-
 				RequestDispatcher disp = req.getRequestDispatcher("Teams.jsp");
-				List<Team> list = (List<Team>) q.execute();
+				List<Team> list = TeamDAO.getTeams();
 				req.setAttribute("teams", list);
 				disp.forward(req, resp);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				q.closeAll();
-			}
 		} else {
 			resp.sendRedirect("/projectcontrol");
 		}
