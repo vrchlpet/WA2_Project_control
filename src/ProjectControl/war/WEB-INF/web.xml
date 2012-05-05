@@ -139,6 +139,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/removetask</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>SaveDocumentServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.SaveDocumentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveDocumentServlet</servlet-name>
+		<url-pattern>/savedocument</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SaveSubtaskServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.SaveSubtaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveSubtaskServlet</servlet-name>
+		<url-pattern>/savesubtask</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 	
 	
 	<welcome-file-list>

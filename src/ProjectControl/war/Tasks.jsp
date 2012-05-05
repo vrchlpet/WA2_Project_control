@@ -23,6 +23,7 @@
 				<th>Task name</th>
 				<th>Task owner</th>
 			</tr>
+			
 			<tr>
 				<td>${item.taskName}</td>
 				<td>${item.owner}</td>
@@ -43,6 +44,13 @@
 						<input type="hidden" name="taskName" value="${item.taskName}">
 						<button action="submit">add subtask</button>
 					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<c:forEach var="doc" items="${item.docEntity}">
+						<p><a href="${doc.href}">${doc.docName}</a></p>
+					</c:forEach>
 				</td>
 			</tr>
 

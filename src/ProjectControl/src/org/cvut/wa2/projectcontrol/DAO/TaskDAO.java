@@ -107,7 +107,8 @@ public class TaskDAO {
 		}
 		
 		try {
-			de = pm.getObjectById(DocumentEntity.class, docName);
+			Key key1 = KeyFactory.createKey(DocumentEntity.class.getSimpleName(),docName);
+			de = pm.getObjectById(DocumentEntity.class, key1);
 		} catch (JDOObjectNotFoundException e) {
 			de = new DocumentEntity();
 			Key key1 = KeyFactory.createKey(DocumentEntity.class.getSimpleName(),docName);
@@ -116,6 +117,7 @@ public class TaskDAO {
 			de.setHref(href);
 		}
 		
+		task.getDocEntity().add(de);
 		
 		pm.makePersistent(de);
 		pm.makePersistent(task);

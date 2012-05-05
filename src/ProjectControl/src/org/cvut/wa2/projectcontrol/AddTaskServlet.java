@@ -34,7 +34,7 @@ public class AddTaskServlet extends HttpServlet{
 			String year = req.getParameter("year");
 			String teamName = req.getParameter("teamsdropdown");
 			
-			Date d = new Date(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+			Date d = new Date(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day) - 1900);
 			
 			CompositeTask ct = TaskDAO.createCompositeTask(taskName, d, teamName, userService.getCurrentUser().getEmail());
 			
