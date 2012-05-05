@@ -31,9 +31,11 @@ public class CreateTaskServlet extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		RequestDispatcher disp = null;
 		if (userService.isUserLoggedIn()) {
+			String owner = userService.getCurrentUser().getEmail();
 			req.getRequestDispatcher("CreatTask.jsp");
 			List<Team> listOfTeams = TeamDAO.getTeams();
 			 req.setAttribute("listOfTeams", listOfTeams);
+			 req.setAttribute("owner", owner);
 		} else {
 			disp = req.getRequestDispatcher("/projectcontrol");
 		}
