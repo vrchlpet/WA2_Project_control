@@ -93,6 +93,6 @@
 		</select></br>
 		<input type="submit" name="submit" value="Submit">
 	</form>
-	<a href="/Tasks.jsp">Back</a>
+	<a href="/tasks">Back</a>
 </body>
 </html>

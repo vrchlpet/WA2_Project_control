@@ -1,10 +1,4 @@
-<!-- Indices written at Sat, 5 May 2012 22:06:54 UTC -->
+<!-- Indices written at Sat, 5 May 2012 22:15:55 UTC -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="DocumentEntity" ancestor="true" source="auto">
-        <property name="docEntity_INTEGER_IDX" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>

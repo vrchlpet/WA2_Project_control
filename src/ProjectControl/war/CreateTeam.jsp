@@ -11,6 +11,6 @@
 		<label>Insert team name:</label> <input type="text" name="teamName">
 		<input type="submit" name="submit" value="Submit">
 	</form>
-	
+	<a href="/teams">Back</a>
 </body>
 </html>

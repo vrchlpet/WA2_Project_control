@@ -22,5 +22,6 @@
 	   	<input type="hidden" name="documentCount"  value="<%= i %>" />
        	<div><input type="submit" name="submit" value="add documents"></div>
   	</form>
+  	<a href="/tasks">Back</a>
 </body>
 </html>

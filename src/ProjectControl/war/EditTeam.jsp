@@ -42,5 +42,6 @@
 		</form>
 		</td>
 	</table>
+	<a href="/teams">Back</a>
 </body>
 </html>
