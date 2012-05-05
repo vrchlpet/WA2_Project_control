@@ -18,7 +18,9 @@
 	<c:forEach var="item" items="${listOfTasks}">
 	<table border="2">
 	
-		
+			<tr>
+				<th>Task name</th><th>Task owner</th>
+			</tr>
 			<tr>
 				<td>${item.taskName}</td><td>${item.owner}</td>
 				<td>
@@ -35,22 +37,27 @@
 				</td>
 			</tr>
 			
-			<table>
-			<c:forEach var="subtask" items="${item.subtasks}">
-				
-					<tr>
-						<td>${subtask.taskName }</td><td>${subtask.taskStatus }</td><td>${subtask.responsible }</td>
-						<td>
-							<form action="/finishtask" method="POST">
-								<input type="hidden" name="taskName" value="${subtask.taskName}">
-								<button action="submit">finish</button>
-							</form>
-						</td>
-					</tr>
-				
-			
-			</c:forEach>
-			</table>
+			<tr>
+				<td></td>
+				<td colspan="3">
+					<table>
+					<c:forEach var="subtask" items="${item.subtasks}">
+						
+							<tr>
+								<td>${subtask.taskName }</td><td>${subtask.taskStatus }</td><td>${subtask.responsible }</td>
+								<td>
+									<form action="/finishtask" method="POST">
+										<input type="hidden" name="taskName" value="${subtask.taskName}">
+										<button action="submit">finish</button>
+									</form>
+								</td>
+							</tr>
+						
+					
+					</c:forEach>
+					</table>
+				<td>
+			<tr>
 	   	
 	
 	</table>
