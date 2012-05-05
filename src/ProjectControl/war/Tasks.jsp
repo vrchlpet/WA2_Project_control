@@ -31,7 +31,7 @@
 	
 	</table>
 	
-	<form action="/addtask" method="POST">
+	<form action="/createtask" method="POST">
        	<div><input type="submit" name="submit" value="add task"></div>
   	</form>
 

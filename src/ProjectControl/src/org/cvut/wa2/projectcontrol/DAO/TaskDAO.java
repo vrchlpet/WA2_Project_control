@@ -33,7 +33,7 @@ public class TaskDAO {
 			
 			PersistenceManager manager = PMF.get().getPersistenceManager();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
-			q  = pm.newQuery(Team.class);
+			q  = pm.newQuery(CompositeTask.class);
 			tasks = (List<CompositeTask>) q.execute();
 		
 		} finally {
