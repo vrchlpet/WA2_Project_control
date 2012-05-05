@@ -1,6 +1,7 @@
 package org.cvut.wa2.projectcontrol.DAO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -14,7 +15,10 @@ import com.google.appengine.api.datastore.KeyFactory;
 public class TeamDAO {
 
 	
-	
+	public static List<Team> getTeams(){
+//		TODO: doimplementovat 
+		return null;
+	}
 	
 	public static boolean updateTeam(Team team) {
 		PersistenceManager manager = PMF.get().getPersistenceManager();
