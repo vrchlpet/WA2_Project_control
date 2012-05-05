@@ -2,9 +2,12 @@ package org.cvut.wa2.projectcontrol.entities;
 
 import java.io.Serializable;
 
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+
+@PersistenceCapable
 public class DocumentsToken implements Serializable{
 
 	/**
