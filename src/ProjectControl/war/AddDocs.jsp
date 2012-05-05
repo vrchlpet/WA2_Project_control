@@ -14,11 +14,12 @@
 		<% int i = 0; %>
 	
 		<c:forEach var="item" items="${listOfEntities}">
-			 <input type="checkbox" name="con<%= i++ %>" value="${item.docName}"  /> ${item.docName}<br />
+			 <input type="checkbox" name="con<%= i %>" value="${item.docName}"  /> ${item.docName}<br />
+			<input type="hidend" name="href<%=i++%>" value="${item.href}"/>	   	
 	   	</c:forEach>
-	   	<input type="hidden" name="teamName"  value="${teamName}" />
-	   	<input type="hidden" name="contactsCount"  value="<%= i %>" />
-       	<div><input type="submit" name="submit" value="add members"></div>
+	   	<input type="hidden" name="taskName"  value="${taskName}" />
+	   	<input type="hidden" name="documentCount"  value="<%= i %>" />
+       	<div><input type="submit" name="submit" value="add documents"></div>
   	</form>
 </body>
 </html>
