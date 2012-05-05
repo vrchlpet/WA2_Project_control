@@ -24,7 +24,6 @@ public class TeamDAO {
 		try {
 			
 			
-			PersistenceManager manager = PMF.get().getPersistenceManager();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			q  = pm.newQuery(Team.class);
 			teams = (List<Team>) q.execute();
