@@ -7,11 +7,11 @@
 <title>Create Task</title>
 </head>
 <body>
-	<form action="/tasks" method="POST">
+	<form action="/addtask" method="POST">
 	<label>Owner: ${owner}</label>
 	<label>Insert task name:</label><input type="text" name="taskName"></br>
 	<label>Due date (DD.MM.YYYY):</label><input type="text" name="dueDate"></br>
-	<select name="temasdropdown">
+	<select name="teamsdropdown">
 	<c:forEach var="item" items="${listOfTeams}">
 		<option value="${item.name}">${item.name}</option>
 	</c:forEach>	
