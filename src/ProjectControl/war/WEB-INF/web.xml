@@ -83,6 +83,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>DocumentsCallBackServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.DocumentsCallBackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DocumentsCallBackServlet</servlet-name>
+		<url-pattern>/documentscallbackservlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>SaveMemberServlet</servlet-name>
 		<servlet-class>org.cvut.wa2.projectcontrol.SaveMemberServlet</servlet-class>
 	</servlet>

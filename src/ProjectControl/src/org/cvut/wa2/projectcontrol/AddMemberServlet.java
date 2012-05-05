@@ -58,7 +58,7 @@ public class AddMemberServlet extends HttpServlet{
 					if (team != null) {
 						
 						
-						//Get calendars
+						//Get contacts
 						GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
 						oauthParameters.setOAuthConsumerKey("anonymous");
 						oauthParameters.setOAuthConsumerSecret("anonymous");
