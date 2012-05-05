@@ -1,22 +1,45 @@
 package org.cvut.wa2.projectcontrol.entities;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.appengine.api.datastore.Key;
+
+@PersistenceCapable
 public class DocumentEntity {
-private String docName;
-private String href;
-public String getHref() {
-	return href;
-}
+	
+	@PrimaryKey
+	private Key docKey;
+	
+	public Key getDocKey() {
+		return docKey;
+	}
 
-public void setHref(String href) {
-	this.href = href;
-}
+	public void setDocKey(Key docKey) {
+		this.docKey = docKey;
+	}
 
-public String getDocName() {
-	return docName;
-}
+	@Persistent
+	private String docName;
+	
+	@Persistent
+	private String href;
 
-public void setDocName(String docName) {
-	this.docName = docName;
-}
+	public String getHref() {
+		return href;
+	}
+	
+	public void setHref(String href) {
+		this.href = href;
+	}
+	
+	public String getDocName() {
+		return docName;
+	}
+	
+	public void setDocName(String docName) {
+		this.docName = docName;
+	}
 
 }

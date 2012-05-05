@@ -2,6 +2,7 @@ package org.cvut.wa2.projectcontrol.entities;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -21,7 +22,18 @@ public class CompositeTask {
 	
 	@Persistent
 	protected Date dateOfStartDelivery;
+	
+	@Persistent
+	protected List<DocumentEntity> docEntity;
 
+
+	public List<DocumentEntity> getDocEntity() {
+		return docEntity;
+	}
+
+	public void setDocEntity(List<DocumentEntity> docEntity) {
+		this.docEntity = docEntity;
+	}
 
 	public CompositeTask() {}
 	
