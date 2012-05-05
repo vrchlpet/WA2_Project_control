@@ -21,14 +21,40 @@ import com.google.appengine.api.datastore.KeyFactory;
 public class TaskDAO {
 
 	
-	public static Task createSubTask() {
+	public static Task createSubTask(String taskName, String subTaskName, String owner, String responsible) {
 		Task task = null;
 		
+		CompositeTask ct = getTask(taskName);
 		
+		if ( ct == null) return null;
 		
+		task = new Task();
+		Key key1 = KeyFactory.createKey(Task.class.getSimpleName(),subTaskName);
+		task.setTaskName(subTaskName);
+		task.setTaskOwner(owner);
+		task.setResponsible(responsible);
+		task.setTaskStatus(Status.processing);
+		task.setTaskKey(key1);
 		
+		PersistenceManager pm = PMF.get();
+		
+		ct.getSubtasks().add(task);
+		
+		pm.makePersistent(task);
+		pm.makePersistent(ct);
 		
 		return task;
+	}
+	
+	public static boolean removeTask(String taskName) {
+		
+		PersistenceManager pm = PMF.get();
+		CompositeTask ct = getTask(taskName);
+		if ( ct == null) return false;
+		pm.deletePersistent(ct);
+		
+		
+		return true;
 	}
 	
 
