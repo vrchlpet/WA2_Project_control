@@ -20,6 +20,17 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 public class TaskDAO {
 
+	
+	public static Task createSubTask() {
+		Task task = null;
+		
+		
+		
+		
+		
+		return task;
+	}
+	
 
 	public static CompositeTask getTask(String taskName) {
 		CompositeTask task = null;

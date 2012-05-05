@@ -18,7 +18,7 @@ public class CompositeTask {
 	private String owner;
 	
 	@Persistent
-	private ArrayList<Task> subtasks;
+	private List<Task> subtasks;
 	
 	@Persistent
 	protected Date dateOfStartDelivery;
@@ -69,7 +69,7 @@ public class CompositeTask {
 		this.taskName = compositeTaskName;
 	}
 
-	public ArrayList<Task> getSubtasks() {
+	public List<Task> getSubtasks() {
 		return subtasks;
 	}
 

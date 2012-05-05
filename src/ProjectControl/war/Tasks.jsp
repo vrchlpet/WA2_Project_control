@@ -15,21 +15,46 @@
 	
 	<h3>Available tasks</h3>
 	
-	<table>
+	<c:forEach var="item" items="${listOfTasks}">
+	<table border="2">
 	
-		<c:forEach var="item" items="${listOfTasks}">
+		
 			<tr>
 				<td>${item.taskName}</td><td>${item.owner}</td>
 				<td>
 						<form action="/adddoc" method="POST">
 							<input type="hidden" name="taskName" value="${item.taskName}">
-							<button action="submit">Edit</button>
+							<button action="submit">add doc</button>
 						</form>
 				</td>
+				<td>
+					<form action="/removetask" method="POST">
+						<input type="hidden" name="taskName" value="${item.taskName}">
+						<button action="submit">remove</button>
+					</form>
+				</td>
 			</tr>
-	   	</c:forEach>
+			
+			<table>
+			<c:forEach var="subtask" items="${item.subtasks}">
+				
+					<tr>
+						<td>${subtask.taskName }</td><td>${subtask.taskStatus }</td><td>${subtask.responsible }</td>
+						<td>
+							<form action="/finishtask" method="POST">
+								<input type="hidden" name="taskName" value="${subtask.taskName}">
+								<button action="submit">finish</button>
+							</form>
+						</td>
+					</tr>
+				
+			
+			</c:forEach>
+			</table>
+	   	
 	
 	</table>
+	</c:forEach>
 	
 	<form action="/createtask" method="POST">
        	<div><input type="submit" name="submit" value="add task"></div>
