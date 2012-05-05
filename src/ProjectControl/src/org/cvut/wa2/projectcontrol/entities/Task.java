@@ -11,7 +11,6 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-@Discriminator(strategy = DiscriminatorStrategy.CLASS_NAME)
 public class Task {
 	
 	@PrimaryKey
@@ -21,13 +20,13 @@ public class Task {
 	protected String taskName;
 	
 	@Persistent
-	protected Date dateOfStartDelivery;
-	
-	@Persistent
 	protected Status taskStatus;
 	
 	@Persistent
 	protected String taskOwner;
+	
+	@Persistent
+	protected String responsible;
 
 
 	
@@ -35,18 +34,41 @@ public class Task {
 
 
 
-	public Task(Key taskKey, String taskName, Date dateOfStartDelivery,
-			Status taskStatus, String tm) {
-		super();
+	public Task(Key taskKey, String taskName,
+			Status taskStatus, String tm, String responsible) {
+		this.taskKey = taskKey;
+		this.responsible = responsible;
 		this.taskOwner = tm;
 		this.taskName = taskName;
-		this.taskKey = taskKey;
-		this.dateOfStartDelivery = dateOfStartDelivery;
 		this.taskStatus = taskStatus;
 	}
 
 
 	
+
+	public Key getTaskKey() {
+		return taskKey;
+	}
+
+
+
+	public void setTaskKey(Key taskKey) {
+		this.taskKey = taskKey;
+	}
+
+
+
+	public String getResponsible() {
+		return responsible;
+	}
+
+
+
+	public void setResponsible(String responsible) {
+		this.responsible = responsible;
+	}
+
+
 
 	public String getTaskOwner() {
 		return taskOwner;
@@ -69,34 +91,6 @@ public class Task {
 	public void setTaskName(String taskName) {
 		this.taskName = taskName;
 	}
-
-
-
-	public Key getTaskKey() {
-		return taskKey;
-	}
-
-
-
-	public void setTaskKey(Key taskKey) {
-		this.taskKey = taskKey;
-	}
-
-
-
-	public Date getDateOfStartDelivery() {
-		return dateOfStartDelivery;
-	}
-
-
-
-	public void setDateOfStartDelivery(Date dateOfStartDelivery) {
-		this.dateOfStartDelivery = dateOfStartDelivery;
-	}
-
-
-
-
 
 	public Status getTaskStatus() {
 		return taskStatus;

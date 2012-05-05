@@ -19,7 +19,7 @@
 	
 		<c:forEach var="item" items="${listOfTasks}">
 			<tr>
-				<td>${item.taskName}</td><td>${item.owner.name}</td>
+				<td>${item.taskName}</td><td>${item.owner}</td>
 				<td>
 						<form action="/edittask" method="POST">
 							<input type="hidden" name="taskName" value="${item.taskName} }">

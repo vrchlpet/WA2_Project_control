@@ -45,15 +45,14 @@ public class AddMemberServlet extends HttpServlet{
 			User user = userService.getCurrentUser();
 			
 			
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get();
 			ContactsToken token = null;
 			try {
 				token = pm.getObjectById(ContactsToken.class, user.getEmail());
 				
 				String teamName = req.getParameter("teamName");
 				if (teamName != null) {
-					PersistenceManager manager = PMF.get().getPersistenceManager();
-					Team team = manager.getObjectById(Team.class, teamName);
+					Team team = pm.getObjectById(Team.class, teamName);
 					
 					if (team != null) {
 						

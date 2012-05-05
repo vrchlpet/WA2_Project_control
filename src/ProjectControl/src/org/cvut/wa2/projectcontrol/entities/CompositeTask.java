@@ -1,57 +1,60 @@
 package org.cvut.wa2.projectcontrol.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class CompositeTask extends Task {
+public class CompositeTask {
+	
+	@PrimaryKey
+	private String taskName;
 	
 	@Persistent
-	private Team owner;
-	
-	@Persistent
-	private TeamMember responsible;
+	private String owner;
 	
 	@Persistent
 	private ArrayList<Task> subtasks;
 	
 	@Persistent
-	protected String docLink;
+	protected Date dateOfStartDelivery;
 
-	public String getDocLink() {
-		return docLink;
-	}
-
-	public void setDocLink(String docLink) {
-		this.docLink = docLink;
-	}
 
 	public CompositeTask() {}
 	
-	public CompositeTask(Team owner, TeamMember responsible,
-			ArrayList<Task> subtasks, String docLink) {
-		super();
+	public CompositeTask(String owner, String compositeTaskName, Date dateOfStartDelivery,
+			ArrayList<Task> subtasks) {
+		this.dateOfStartDelivery = dateOfStartDelivery;
+		this.taskName = compositeTaskName;
 		this.owner = owner;
-		this.responsible = responsible;
 		this.subtasks = subtasks;
 	}
 
-	public Team getOwner() {
+	public Date getDateOfStartDelivery() {
+		return dateOfStartDelivery;
+	}
+
+	public void setDateOfStartDelivery(Date dateOfStartDelivery) {
+		this.dateOfStartDelivery = dateOfStartDelivery;
+	}
+
+	public String getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Team owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
 
-	public TeamMember getResponsible() {
-		return responsible;
+	public String getTaskName() {
+		return taskName;
 	}
 
-	public void setResponsible(TeamMember responsible) {
-		this.responsible = responsible;
+	public void setTaskName(String compositeTaskName) {
+		this.taskName = compositeTaskName;
 	}
 
 	public ArrayList<Task> getSubtasks() {

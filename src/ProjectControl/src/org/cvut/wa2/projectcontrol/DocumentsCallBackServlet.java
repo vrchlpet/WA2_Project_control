@@ -52,7 +52,7 @@ public class DocumentsCallBackServlet extends HttpServlet{
 			// parse and add the parameters to our instance of oauthParameters
 			oauthHelper.getOAuthParametersFromCallback(req.getQueryString(), oauthParameters);
 
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get();
 			try {
 				// Now that we have all the OAuth parameters we need, we can
 				// generate an access token and access token secret. These

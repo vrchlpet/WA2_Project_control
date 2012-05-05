@@ -32,7 +32,7 @@ public class CreateTeamServlet extends HttpServlet {
 			if (teamName.trim().equals("")) {
 				disp.forward(req, resp);
 			} else {
-				PersistenceManager manager = PMF.get().getPersistenceManager();
+				PersistenceManager manager = PMF.get();
 				Team team = null;
 				try {
 					team = manager.getObjectById(Team.class, teamName);

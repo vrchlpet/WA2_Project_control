@@ -25,7 +25,7 @@ public class EditTeamServlet extends HttpServlet{
 		RequestDispatcher disp = req.getRequestDispatcher("EditTeam.jsp");
 		if(user!= null){
 			String teamName =  req.getParameter("teamName");
-			PersistenceManager manager = PMF.get().getPersistenceManager();
+			PersistenceManager manager = PMF.get();
 			Team team = manager.getObjectById(Team.class,teamName);
 			if(team == null){
 				disp = req.getRequestDispatcher("Teams.jsp");
