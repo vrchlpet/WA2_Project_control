@@ -73,8 +73,6 @@ public class DocumentsCallBackServlet extends HttpServlet{
 
 			} catch (OAuthException e) {
 				e.printStackTrace();
-			} finally {
-				pm.close();
 			}
     	}
         resp.sendRedirect("/tasks");

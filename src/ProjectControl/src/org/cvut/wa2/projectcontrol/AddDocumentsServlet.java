@@ -128,8 +128,6 @@ public class AddDocumentsServlet extends HttpServlet {
 				} catch (OAuthException ee) {
 					ee.printStackTrace();
 				}
-			} finally {
-				pm.close();
 			}
 		} else {
 			disp = req.getRequestDispatcher("/projectcontrol");

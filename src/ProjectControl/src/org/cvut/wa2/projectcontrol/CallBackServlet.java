@@ -71,8 +71,6 @@ public class CallBackServlet extends HttpServlet {
 
 			} catch (OAuthException e) {
 				e.printStackTrace();
-			} finally {
-				pm.close();
 			}
     	}
         resp.sendRedirect("/teams");
