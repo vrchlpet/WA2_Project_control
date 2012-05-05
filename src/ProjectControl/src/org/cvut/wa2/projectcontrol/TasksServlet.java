@@ -19,13 +19,22 @@ public class TasksServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		UserService userService = UserServiceFactory.getUserService();
+		
+		RequestDispatcher disp = null;
+		if (userService.isUserLoggedIn()) {
 		UserService service = UserServiceFactory.getUserService();
 		User user = service.getCurrentUser();
-		if(user!= null){
-			RequestDispatcher disp = req.getRequestDispatcher("CreateTask.jsp");
-			disp.forward(req, resp);
-		}
-		else{
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		} else{
 			resp.sendRedirect("/projectcontrol");
 		}
 	}
