@@ -78,8 +78,9 @@ public class AddMemberServlet extends HttpServlet{
 							result = new ArrayList<ContactEntry>(resultFeed.getEntries());
 							mails = new ArrayList<String>();
 							for (ContactEntry ce : result) {
+								if (ce.getNickname().toString().length() == 0)
 								for (Email em : ce.getEmailAddresses())
-								mails.add(em.getAddress());
+									mails.add(em.getAddress());
 							}
 							
 							/*

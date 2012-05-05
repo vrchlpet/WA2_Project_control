@@ -22,7 +22,7 @@ public class TeamMember {
 	@Persistent
 	private ArrayList<AccessToken> accessTokens;
 	
-	@Persistent(mappedBy="teamMemberOwner")
+	@Persistent(mappedBy="taskOwner")
 	private ArrayList<Task> tasks;
 
 

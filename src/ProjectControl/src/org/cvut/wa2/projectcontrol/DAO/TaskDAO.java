@@ -1,8 +1,14 @@
 package org.cvut.wa2.projectcontrol.DAO;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import org.cvut.wa2.projectcontrol.entities.CompositeTask;
+import org.cvut.wa2.projectcontrol.entities.Status;
 import org.cvut.wa2.projectcontrol.entities.Task;
 import org.cvut.wa2.projectcontrol.entities.Team;
 import org.cvut.wa2.projectcontrol.entities.TeamMember;
@@ -16,8 +22,30 @@ public class TaskDAO {
 	
 	
 	
+	
+	public static List<CompositeTask> getTasks() {
+		
+		Query q = null;
+		List<CompositeTask> tasks = null;
+		
+		try {
+			
+			
+			PersistenceManager manager = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			q  = pm.newQuery(Team.class);
+			tasks = (List<CompositeTask>) q.execute();
+		
+		} finally {
+			q.closeAll();
+		}
+		return tasks;
+	}
+	
+	
+	
 	public static CompositeTask createCompositeTask(String taskName, Date dateOfStartDelivery, String teamName,
-			String teamMember) {
+			String owner) {
 		
 		if (taskName == null) return null;
 		
@@ -29,32 +57,20 @@ public class TaskDAO {
 		
 		if (team == null) return null;
 		
-		TeamMember teamM = null;
-		x:for (TeamMember tm : team.getMembers()) {
-			if (tm.getName().equals(teamMember)) {
-				teamM = tm;
-				break x;
-			}
-		}
-		
-		if (teamM == null) return null;
-		
-		Key key3 = KeyFactory.createKey(Task.class.getSimpleName(),"Compositetask1");
+		Key key3 = KeyFactory.createKey(CompositeTask.class.getSimpleName(),taskName);
 		
 		CompositeTask ct = new CompositeTask();
 		ct.setDateOfStartDelivery(dateOfStartDelivery);
 		ct.setDocLink("");
 		ct.setOwner(team);
-		ct.setResponsible(teamM);
+		ct.setSubtasks(new ArrayList<Task>());
+		ct.setTaskKey(key3);
+		ct.setTaskName(taskName);
+		ct.setTaskStatus(Status.processing);
+		ct.setTaskOwner(owner);
 		
-		
-		
-		
-		
-		
-		teamM.getTasks().add(ct);
-		
-		
+		PersistenceManager manager = PMF.get().getPersistenceManager();
+		manager.makePersistent(ct);
 		
 		return ct;
 	}

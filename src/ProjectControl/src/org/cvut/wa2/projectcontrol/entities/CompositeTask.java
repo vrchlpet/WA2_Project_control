@@ -16,11 +16,22 @@ public class CompositeTask extends Task {
 	
 	@Persistent
 	private ArrayList<Task> subtasks;
+	
+	@Persistent
+	protected String docLink;
+
+	public String getDocLink() {
+		return docLink;
+	}
+
+	public void setDocLink(String docLink) {
+		this.docLink = docLink;
+	}
 
 	public CompositeTask() {}
 	
 	public CompositeTask(Team owner, TeamMember responsible,
-			ArrayList<Task> subtasks) {
+			ArrayList<Task> subtasks, String docLink) {
 		super();
 		this.owner = owner;
 		this.responsible = responsible;
