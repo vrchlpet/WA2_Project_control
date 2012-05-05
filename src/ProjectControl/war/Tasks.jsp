@@ -91,8 +91,8 @@
 	<h4>Filters:</h4>
 	<form action="/filterbystatus" method="POST">
 		<select name="statusdropdown">
-			<option value="statusProcessing">Processing</option>
-			<option value="statusFinished">Finished</option>
+			<option value="Processing">Processing</option>
+			<option value="Finished">Finished</option>
 		</select>
 		<input type="submit" name="submit" value="Filter!">
 	</form>
