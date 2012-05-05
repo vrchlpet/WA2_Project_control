@@ -13,7 +13,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class TasksServlet extends HttpServlet{
-
+// listuje existujuce composite tasky
 	private static final long serialVersionUID = -2239726230771945395L;
 
 	@Override

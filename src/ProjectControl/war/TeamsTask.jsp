@@ -10,6 +10,6 @@
 <body>
 
 <a href="/teams">Teams view</a>
-<a href="/tasks">Project view</a>
+<a href="/tasks">Tasks view</a>
 </body>
 </html>
