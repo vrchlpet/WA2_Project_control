@@ -21,7 +21,7 @@
 			<tr>
 				<td>${item.taskName}</td><td>${item.owner}</td>
 				<td>
-						<form action="/edittask" method="POST">
+						<form action="/adddoc" method="POST">
 							<input type="hidden" name="taskName" value="${item.taskName} }">
 							<button action="submit">Edit</button>
 						</form>

@@ -12,6 +12,14 @@ public class DocumentEntity {
 	@PrimaryKey
 	private Key docKey;
 	
+	@Persistent
+	private String docName;
+	
+	@Persistent
+	private String href;
+
+	
+	
 	public Key getDocKey() {
 		return docKey;
 	}
@@ -19,13 +27,9 @@ public class DocumentEntity {
 	public void setDocKey(Key docKey) {
 		this.docKey = docKey;
 	}
-
-	@Persistent
-	private String docName;
 	
-	@Persistent
-	private String href;
-
+	
+	
 	public String getHref() {
 		return href;
 	}
