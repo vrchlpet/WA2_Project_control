@@ -20,7 +20,22 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 public class TaskDAO {
 
-	
+
+	public static CompositeTask getTask(String taskName) {
+		CompositeTask task = null;
+		
+		PersistenceManager pm = PMF.get();
+		
+		try {
+			Key key1 = KeyFactory.createKey(CompositeTask.class.getSimpleName(),taskName);
+			task = pm.getObjectById(CompositeTask.class, taskName);
+		} catch (JDOObjectNotFoundException e) {
+			return null;
+		}
+		
+		
+		return task;
+	}
 	
 	
 	public static DocumentEntity addDoc(String taskName, String docName, String href) {
