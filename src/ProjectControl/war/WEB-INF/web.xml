@@ -120,7 +120,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/filterbystatus</url-pattern>
 	</servlet-mapping>
 
-	
+	<servlet>
+		<servlet-name>CreateSubtaskServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.CreateSubtaskServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateSubtaskServlet</servlet-name>
+		<url-pattern>/createsubtask</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>AddTaskServlet</servlet-name>
