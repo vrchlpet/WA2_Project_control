@@ -19,6 +19,8 @@ public class AddTaskServlet extends HttpServlet{
 		
 		if (userService.isUserLoggedIn()) {
 		
+		} else {
+			
 		}
 
 	}
