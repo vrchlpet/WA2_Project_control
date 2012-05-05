@@ -14,7 +14,7 @@
 		<% int i = 0; %>
 	
 		<c:forEach var="item" items="${listOfEntities}">
-			 <input type="checkbox" name="con<%= i++ %>" value="${item}"  /> ${item}<br />
+			 <input type="checkbox" name="con<%= i++ %>" value="${item.docName}"  /> ${item.docName}<br />
 	   	</c:forEach>
 	   	<input type="hidden" name="teamName"  value="${teamName}" />
 	   	<input type="hidden" name="contactsCount"  value="<%= i %>" />
