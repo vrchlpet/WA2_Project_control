@@ -35,6 +35,7 @@ public class CreateSubtaskServlet extends HttpServlet {
 				listOfEmails.add(mem.getName());
 			}
 			req.setAttribute("emails", listOfEmails);
+			req.setAttribute("taskName", taskName);
 			disp = req.getRequestDispatcher("CreateSubtask.jsp");
 			disp.forward(req, resp);
 		} else {
