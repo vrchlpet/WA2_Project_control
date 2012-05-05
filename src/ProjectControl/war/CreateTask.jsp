@@ -90,7 +90,7 @@
 			<c:forEach var="item" items="${listOfTeams}">
 				<option value="${item.name}">${item.name}</option>
 			</c:forEach>	
-		</select>
+		</select></br>
 		<input type="submit" name="submit" value="Submit">
 	</form>
 </body>
