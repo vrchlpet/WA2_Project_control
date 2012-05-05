@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import org.cvut.wa2.projectcontrol.entities.Status %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,6 +36,12 @@
 						<button action="submit">remove</button>
 					</form>
 				</td>
+				<td>
+					<form action="/addsubtask" method="POST">
+						<input type="hidden" name="taskName" value="${item.taskName}">
+						<button action="submit">add subtask</button>
+					</form>
+				</td>
 			</tr>
 			
 			<tr>
@@ -46,14 +53,17 @@
 							<tr>
 								<td>${subtask.taskName }</td><td>${subtask.taskStatus }</td><td>${subtask.responsible }</td>
 								<td>
-									<form action="/finishtask" method="POST">
-										<input type="hidden" name="taskName" value="${subtask.taskName}">
-										<button action="submit">finish</button>
-									</form>
+									<c:if test="${ subtask.taskStatus == Status.finished }">
+										<lable>FINISHED</lable>
+									</c:if>
+									<c:if test="${ subtask.taskStatus == Status.processing }">
+										<form action="/finishtask" method="POST">
+											<input type="hidden" name="taskName" value="${subtask.taskName}">
+											<button action="submit">finish</button>
+										</form>
+									</c:if>
 								</td>
 							</tr>
-						
-					
 					</c:forEach>
 					</table>
 				<td>
