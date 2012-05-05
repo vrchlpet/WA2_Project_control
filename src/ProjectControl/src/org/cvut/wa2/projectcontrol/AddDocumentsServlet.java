@@ -39,14 +39,13 @@ public class AddDocumentsServlet extends HttpServlet {
 		RequestDispatcher disp = null;
 		if (userService.isUserLoggedIn()) {
 			User user = userService.getCurrentUser();
-			PersistenceManager pm = PMF.get().getPersistenceManager();
+			PersistenceManager pm = PMF.get();
 			DocumentsToken token = null;
 			try {
 				token = pm.getObjectById(DocumentsToken.class, user.getEmail());
 				String taskName = req.getParameter("taskName");
 				if (taskName != null) {
-					PersistenceManager manager = PMF.get()
-							.getPersistenceManager();
+					PersistenceManager manager = PMF.get();
 					Task task = manager.getObjectById(Task.class, taskName);
 					if (task != null) {
 						GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
