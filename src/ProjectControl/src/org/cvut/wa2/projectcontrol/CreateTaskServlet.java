@@ -32,14 +32,15 @@ public class CreateTaskServlet extends HttpServlet {
 		RequestDispatcher disp = null;
 		if (userService.isUserLoggedIn()) {
 			String owner = userService.getCurrentUser().getEmail();
-			disp = req.getRequestDispatcher("/CreateTask.jsp");
 			List<Team> listOfTeams = TeamDAO.getTeams();
-			 req.setAttribute("listOfTeams", listOfTeams);
-			 req.setAttribute("owner", owner);
+			req.setAttribute("listOfTeams", listOfTeams);
+			req.setAttribute("owner", owner);
+			disp = req.getRequestDispatcher("/CreateTask.jsp");
+			disp.forward(req, resp);
 		} else {
 			disp = req.getRequestDispatcher("/projectcontrol");
 		}
-		disp.forward(req, resp);
+		
 	}
 
 	@Override

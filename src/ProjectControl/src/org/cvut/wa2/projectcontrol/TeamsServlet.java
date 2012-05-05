@@ -34,6 +34,7 @@ public class TeamsServlet extends HttpServlet {
 				req.setAttribute("teams", list);
 				disp.forward(req, resp);
 		} else {
+			
 			resp.sendRedirect("/projectcontrol");
 		}
 
