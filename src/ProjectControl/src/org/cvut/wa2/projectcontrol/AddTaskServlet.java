@@ -1,6 +1,8 @@
 package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +19,17 @@ public class AddTaskServlet extends HttpServlet{
 		UserService userService = UserServiceFactory.getUserService();
 		
 		
+		RequestDispatcher disp = null;
+		
 		if (userService.isUserLoggedIn()) {
 		
-		} else {
 			
+			
+			
+			
+		} else {
+			disp = req.getRequestDispatcher("/projectcontrol");
+			disp.forward(req, resp);
 		}
 
 	}

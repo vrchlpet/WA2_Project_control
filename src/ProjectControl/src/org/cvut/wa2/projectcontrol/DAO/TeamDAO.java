@@ -6,6 +6,7 @@ import java.util.List;
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.servlet.RequestDispatcher;
 
 import org.cvut.wa2.projectcontrol.entities.CompositeTask;
 import org.cvut.wa2.projectcontrol.entities.Team;
@@ -18,21 +19,16 @@ public class TeamDAO {
 
 	
 	public static List<Team> getTeams(){
-		Query q = null;
-		List<Team> teams = null;
 		
+		Query q = null;
 		try {
-			
-			
-			PersistenceManager manager = PMF.get().getPersistenceManager();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 			q  = pm.newQuery(Team.class);
-			teams = (List<Team>) q.execute();
-		
+			List<Team> list = (List<Team>) q.execute();
+			return list;
 		} finally {
 			q.closeAll();
 		}
-		return teams;
 	}
 	
 	public static boolean updateTeam(Team team) {
