@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-<<<<<<< HEAD
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import org.cvut.wa2.projectcontrol.entities.Status %>
-=======
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
->>>>>>> 81499935f9062002610953f302192a53b6702329
+<%@page import="org.cvut.wa2.projectcontrol.entities.Status" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,8 +57,8 @@
 								<td>${subtask.taskStatus }</td>
 								<td>${subtask.responsible }</td>
 								<td>
-									<c:if test="${ subtask.taskStatus == Status.finished }">
-										<lable>FINISHED</lable>
+									<c:if test="${subtask.taskStatus == Status.finished }">
+										<label>FINISHED</label>
 									</c:if>
 									<c:if test="${ subtask.taskStatus == Status.processing }">
 										<form action="/finishtask" method="POST">
@@ -73,7 +68,7 @@
 									</c:if>
 								</td>
 							</tr>
-					</c:forEach>
+						</c:forEach>
 					</table>
 				<td>
 			<tr>

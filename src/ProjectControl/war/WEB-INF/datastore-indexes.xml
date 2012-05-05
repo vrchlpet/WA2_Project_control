@@ -13,4 +13,7 @@
     <datastore-index kind="Task" ancestor="true" source="manual">
         <property name="subtasks_INTEGER_IDX" direction="asc"/>
     </datastore-index>
+    <datastore-index kind="DocumentEntity" ancestor="true" source="manual">
+        <property name="docEntity_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
 </datastore-indexes>
