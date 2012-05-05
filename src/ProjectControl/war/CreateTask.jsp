@@ -9,14 +9,14 @@
 </head>
 <body>
 	<form action="/addtask" method="POST">
-		<label>Owner: ${owner}</label>
+		<label>Owner: ${owner}</label></br>
 		<label>Insert task name:</label><input type="text" name="taskName"></br>
 		<label>Due date (DD.MM.YYYY):</label><input type="text" name="dueDate"></br>
 		<select name="temasdropdown">
 			<c:forEach var="item" items="${listOfTeams}">
 				<option value="${item.name}">${item.name}</option>
 			</c:forEach>	
-		</select>
+		</select></br>
 		<input type="submit" name="submit" value="Submit">
 	</form>
 </body>
