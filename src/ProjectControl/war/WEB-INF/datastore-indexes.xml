@@ -7,4 +7,7 @@
     <datastore-index kind="AccessToken" ancestor="true" source="manual">
         <property name="accessTokens_INTEGER_IDX" direction="asc"/>
     </datastore-index>
+    <datastore-index kind="Task" ancestor="true" source="manual">
+        <property name="tasks_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
 </datastore-indexes>

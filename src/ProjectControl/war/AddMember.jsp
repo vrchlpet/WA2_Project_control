@@ -17,9 +17,19 @@
 	<h1>Team ${teamName}</h1>
 	
 	<h3>Available contacts</h3>
-	<c:forEach var="item" items="${contacts}">
-		<li>${item}</li>
-   	</c:forEach>
+	
+	<form action="/savemember" method="POST">
+		
+		<% int i = 0; %>
+	
+		<c:forEach var="item" items="${contacts}">
+			 <input type="checkbox" name="con<%= i++ %>" value="${item}"  /> ${item}<br />
+	   	</c:forEach>
+	   	<input type="hidden" name="teamName"  value="${teamName}" />
+	   	<input type="hidden" name="contactsCount"  value="<%= i %>" />
+       	<div><input type="submit" name="submit" value="add members"></div>
+  	</form>
+	
 
 </body>
 </html>

@@ -96,6 +96,10 @@ public class AddMemberServlet extends HttpServlet{
 						}
 						// end get contact list
 						
+						for (TeamMember member : team.getMembers()) {
+							mails.remove(member.getName());
+						}
+						
 						List<TeamMember> teamMembers = team.getMembers();
 						req.setAttribute("teamName", teamName);
 						//req.setAttribute("teamMembers", teamMembers);
