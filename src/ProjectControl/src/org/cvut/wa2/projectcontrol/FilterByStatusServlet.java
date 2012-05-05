@@ -64,8 +64,7 @@ public class FilterByStatusServlet extends HttpServlet {
 	private boolean areAllSubtasksFinished(CompositeTask ct) {
 		List<Task> subTasks = ct.getSubtasks();
 		for (Task task : subTasks) {
-			if (task.getTaskStatus().equals(Status.processing))
-				;
+			if (task.getTaskStatus().equals(Status.processing));
 			return false;
 		}
 		return true;
