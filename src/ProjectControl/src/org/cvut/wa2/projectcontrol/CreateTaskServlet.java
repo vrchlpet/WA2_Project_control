@@ -1,6 +1,7 @@
 package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -11,13 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cvut.wa2.projectcontrol.DAO.PMF;
+import org.cvut.wa2.projectcontrol.DAO.TeamDAO;
+import org.cvut.wa2.projectcontrol.entities.CompositeTask;
 import org.cvut.wa2.projectcontrol.entities.DocumentsToken;
+import org.cvut.wa2.projectcontrol.entities.Team;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public class CreateTaskServlet extends HttpServlet{
+public class CreateTaskServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -258284310678221536L;
 
@@ -25,28 +29,15 @@ public class CreateTaskServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		UserService userService = UserServiceFactory.getUserService();
-		
 		RequestDispatcher disp = null;
 		if (userService.isUserLoggedIn()) {
-			User user = userService.getCurrentUser();
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			DocumentsToken token = null;
-			try {
-				String consumerKey = "anonymous";
-				String consumerSecret = "anonymous";
-				String scope = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";;
-				String callback = "http://vrchlpet-projectcontrol.appspot.com/callbackservlet";
-			} catch (JDOObjectNotFoundException e) {
-
-				
-			} finally {
-				pm.close();
-			}
-			
-		}else{
+			req.getRequestDispatcher("CreatTask.jsp");
+			List<Team> listOfTeams = TeamDAO.getTeams();
+			 req.setAttribute("listOfTeams", listOfTeams);
+		} else {
 			disp = req.getRequestDispatcher("/projectcontrol");
-			disp.forward(req, resp);
 		}
+		disp.forward(req, resp);
 	}
 
 	@Override
