@@ -40,7 +40,7 @@
 					</form>
 				</td>
 				<td>
-					<form action="/addsubtask" method="POST">
+					<form action="/createsubtask" method="POST">
 						<input type="hidden" name="taskName" value="${item.taskName}">
 						<button action="submit">add subtask</button>
 					</form>
