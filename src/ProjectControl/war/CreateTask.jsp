@@ -93,5 +93,6 @@
 		</select></br>
 		<input type="submit" name="submit" value="Submit">
 	</form>
+	<a href="/Tasks.jsp">Back</a>
 </body>
 </html>

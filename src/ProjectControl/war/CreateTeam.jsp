@@ -8,9 +8,9 @@
 </head>
 <body>
 	<form action="/createteam" method="POST">
-	<label>Insert team name:</label>
-	<input type="text" name="teamName">
-	<input type="submit" name="submit" value="Submit">
+		<label>Insert team name:</label> <input type="text" name="teamName">
+		<input type="submit" name="submit" value="Submit">
 	</form>
+	
 </body>
 </html>
