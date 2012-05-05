@@ -101,6 +101,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/savemember</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+		<servlet-name>FilterByAccountServlet</servlet-name>
+		<servlet-class>org.cvut.wa2.projectcontrol.FilterByAccountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilterByAccountServlet</servlet-name>
+		<url-pattern>/filterbyacc</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet>
 		<servlet-name>AddTaskServlet</servlet-name>
 		<servlet-class>org.cvut.wa2.projectcontrol.AddTaskServlet</servlet-class>
