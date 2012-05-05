@@ -75,7 +75,7 @@ public class CallBackServlet extends HttpServlet {
 				pm.close();
 			}
     	}
-        resp.sendRedirect("/addmember");
+        resp.sendRedirect("/teams");
 		
 		
 		

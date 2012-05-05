@@ -64,8 +64,8 @@ public class AddMemberServlet extends HttpServlet{
 						oauthParameters.setOAuthConsumerSecret("anonymous");
 						oauthParameters.setOAuthToken(token.getToken());
 						oauthParameters.setOAuthTokenSecret(token.getTokenSecret());
-						
 						OAuthSigner signer = new OAuthHmacSha1Signer();
+
 						ContactsService service = new ContactsService("ContactFeedDemo");
 						List<ContactEntry> result = null;
 						List<String> mails = null;
@@ -124,7 +124,7 @@ public class AddMemberServlet extends HttpServlet{
 				String consumerKey = "anonymous";
 				String consumerSecret = "anonymous";
 				String scope = "https://www.google.com/m8/feeds";
-				String callback = "http://vrchlpet-contactstest.appspot.com/callbackcontacttoken";
+				String callback = "http://vrchlpet-projectcontrol.appspot.com/callbackservlet";
 
 				GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();	
 				oauthParameters.setOAuthConsumerKey(consumerKey);
