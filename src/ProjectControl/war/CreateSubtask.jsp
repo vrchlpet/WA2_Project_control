@@ -13,7 +13,7 @@
 	
 	<h1>Parrent task ${taskName}</h1>
 	
-	<form action="/savetsubtask" method="POST">
+	<form action="/savesubtask" method="POST">
 		<label>subtask name: </label><input type="text" name="subtaskname"><br>
 		<label>responsibility: </label>
 		
