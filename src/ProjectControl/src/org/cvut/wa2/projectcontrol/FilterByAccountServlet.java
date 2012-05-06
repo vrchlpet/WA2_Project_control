@@ -25,7 +25,7 @@ public class FilterByAccountServlet extends HttpServlet{
 		UserService userService = UserServiceFactory.getUserService();
 		RequestDispatcher disp = null;
 		if (userService.isUserLoggedIn()) {
-			String account = (String)req.getAttribute("account");
+			String account = (String)req.getAttribute("accName");
 			List<CompositeTask> listOfCT = TaskDAO.getTasks();
 			List<CompositeTask> toRet = new ArrayList<CompositeTask>();
 			for (CompositeTask compositeTask : listOfCT) {

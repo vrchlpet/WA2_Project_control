@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="org.cvut.wa2.projectcontrol.entities.Status" %>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="org.cvut.wa2.projectcontrol.entities.Status"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +15,18 @@
 	<h1>Tasks</h1>
 
 	<h3>Available tasks</h3>
-
+	<h4>Filters:</h4>
+	<form action="/filterbystatus" method="POST">
+		<select name="statusdropdown">
+			<option value="Processing">Processing</option>
+			<option value="Finished">Finished</option>
+		</select> <input type="submit" name="submit" value="Filter!">
+	</form>
+	<form action="/filterbyacc" method="POST">
+		<label>Account:</label>
+		<input type="text" name="accName">
+		<input type="submit" name="submit" value="Filter!">	
+	</form>
 	<c:forEach var="item" items="${listOfTasks}">
 		<table border="2">
 
@@ -23,7 +34,7 @@
 				<th>Task name</th>
 				<th>Task owner</th>
 			</tr>
-			
+
 			<tr>
 				<td>${item.taskName}</td>
 				<td>${item.owner}</td>
@@ -47,11 +58,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
-					<c:forEach var="doc" items="${item.docEntity}">
-						<p><a href="${doc.href}">${doc.docName}</a></p>
-					</c:forEach>
-				</td>
+				<td colspan="4"><c:forEach var="doc" items="${item.docEntity}">
+						<p>
+							<a href="${doc.href}">${doc.docName}</a>
+						</p>
+					</c:forEach></td>
 			</tr>
 
 			<tr>
@@ -64,17 +75,15 @@
 								<td>${subtask.taskName }</td>
 								<td>${subtask.taskStatus }</td>
 								<td>${subtask.responsible }</td>
-								<td>
-									<c:if test="${subtask.taskStatus == Status.finished }">
+								<td><c:if test="${subtask.taskStatus == Status.finished }">
 										<label>FINISHED</label>
-									</c:if>
-									<c:if test="${ subtask.taskStatus == Status.processing }">
+									</c:if> <c:if test="${ subtask.taskStatus == Status.processing }">
 										<form action="/finishtask" method="POST">
-											<input type="hidden" name="taskName" value="${subtask.taskName}">
+											<input type="hidden" name="taskName"
+												value="${subtask.taskName}">
 											<button action="submit">finish</button>
 										</form>
-									</c:if>
-								</td>
+									</c:if></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -88,14 +97,8 @@
 			<input type="submit" name="submit" value="add task">
 		</div>
 	</form>
-	<h4>Filters:</h4>
-	<form action="/filterbystatus" method="POST">
-		<select name="statusdropdown">
-			<option value="Processing">Processing</option>
-			<option value="Finished">Finished</option>
-		</select>
-		<input type="submit" name="submit" value="Filter!">
-	</form>
+
+
 	<a href="/TeamsTask.jsp">Back</a>
 
 </body>
