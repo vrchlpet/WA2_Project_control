@@ -2,13 +2,9 @@ package org.cvut.wa2.projectcontrol.entities;
 
 import java.io.Serializable;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.users.User;
 
 @PersistenceCapable
 public class ContactsToken implements Serializable {

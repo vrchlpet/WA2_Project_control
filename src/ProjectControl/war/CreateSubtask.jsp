@@ -26,6 +26,6 @@
 		<input type="hidden" name="taskName" value="${taskName}">
 		<div><input type="submit" name="submit" value="save subtask"></div>
 	</form>
-
+<a href="/tasks">Back</a>
 </body>
 </html>
