@@ -23,21 +23,20 @@
 		</select> <input type="submit" name="submit" value="Filter!">
 	</form>
 	<form action="/filterbyacc" method="POST">
-		<label>Account:</label>
-		<input type="text" name="accName">
-		<input type="submit" name="submit" value="Filter!">	
+		<label>Account:</label> <input type="text" name="accName"> <input
+			type="submit" name="submit" value="Filter!">
 	</form>
 	<c:forEach var="item" items="${listOfTasks}">
 		<table border="2">
 
 			<tr>
 				<th>Task name</th>
-				<th>Task owner</th>
+				<th colspan="3">${item.taskName}</th>
 			</tr>
 
 			<tr>
-				<td>${item.taskName}</td>
-				<td>${item.owner}</td>
+				<td>Team</td>
+				<td colspan="2">${item.owner}</td>
 				<td>
 					<form action="/adddoc" method="POST">
 						<input type="hidden" name="taskName" value="${item.taskName}">
@@ -58,7 +57,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4"><c:forEach var="doc" items="${item.docEntity}">
+
+				<td colspan="5"><c:forEach var="doc" items="${item.docEntity}">
 						<p>
 							<a href="${doc.href}">${doc.docName}</a>
 						</p>
@@ -66,24 +66,28 @@
 			</tr>
 
 			<tr>
-				<td></td>
-				<td colspan="3">
-					<table>
+				<td colspan="5">
+					<table border="1">
+						<tr>
+							<th>task name</th>
+							<th>status</th>
+							<th>responsible</th>
+						</tr>
 						<c:forEach var="subtask" items="${item.subtasks}">
 
 							<tr>
 								<td>${subtask.taskName }</td>
 								<td>${subtask.taskStatus }</td>
 								<td>${subtask.responsible }</td>
-								<td><c:if test="${subtask.taskStatus == Status.finished }">
-										<label>FINISHED</label>
-									</c:if> <c:if test="${ subtask.taskStatus == Status.processing }">
-										<form action="/finishtask" method="POST">
-											<input type="hidden" name="taskName"
-												value="${subtask.taskName}">
-											<button action="submit">finish</button>
-										</form>
-									</c:if></td>
+								<td>
+									<form action="/finishtask" method="POST">
+										<input type="hidden" name="subtaskName"
+											value="${subtask.taskName}"> <input type="hidden"
+											name="taskName" value="${item.taskName}">
+										<button action="submit">finish</button>
+									</form>
+
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
