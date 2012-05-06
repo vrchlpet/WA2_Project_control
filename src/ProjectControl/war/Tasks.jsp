@@ -31,12 +31,12 @@
 
 			<tr>
 				<th>Task name</th>
-				<th colspan="3">${item.taskName}</th>
+				<th>Team</th>
 			</tr>
 
 			<tr>
-				<td>Team</td>
-				<td colspan="2">${item.owner}</td>
+				<td>${item.taskName}</td>
+				<td>${item.owner}</td>
 				<td>
 					<form action="/adddoc" method="POST">
 						<input type="hidden" name="taskName" value="${item.taskName}">

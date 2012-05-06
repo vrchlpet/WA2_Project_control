@@ -28,7 +28,7 @@ public class FilterByStatusServlet extends HttpServlet {
 			String status = (String) req.getParameter("statusdropdown");
 			List<CompositeTask> listOfTask = TaskDAO.getTasks();
 			List<CompositeTask> toReturn = new ArrayList<CompositeTask>();
-			if (status.equals(Status.finished)) {
+			if (status.equals(Status.finished.getString())) {
 				for (CompositeTask compositeTask : listOfTask) {
 					if (compositeTask.getSubtasks().size() != 0) {
 						if (areAllSubtasksFinished(compositeTask)) {
@@ -64,8 +64,9 @@ public class FilterByStatusServlet extends HttpServlet {
 	private boolean areAllSubtasksFinished(CompositeTask ct) {
 		List<Task> subTasks = ct.getSubtasks();
 		for (Task task : subTasks) {
-			if (task.getTaskStatus().equals(Status.processing));
-			return false;
+			if (task.getTaskStatus() == Status.processing) {
+				return false;
+			}
 		}
 		return true;
 	}
