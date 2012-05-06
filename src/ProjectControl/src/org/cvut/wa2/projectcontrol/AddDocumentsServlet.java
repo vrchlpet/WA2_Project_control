@@ -18,7 +18,6 @@ import org.cvut.wa2.projectcontrol.DAO.TaskDAO;
 import org.cvut.wa2.projectcontrol.entities.CompositeTask;
 import org.cvut.wa2.projectcontrol.entities.DocumentEntity;
 import org.cvut.wa2.projectcontrol.entities.DocumentsToken;
-import org.cvut.wa2.projectcontrol.entities.Task;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -47,7 +46,6 @@ public class AddDocumentsServlet extends HttpServlet {
 				token = pm.getObjectById(DocumentsToken.class, user.getEmail());
 				String taskName = req.getParameter("taskName");
 				if (taskName != null) {
-					PersistenceManager manager = PMF.get();
 					CompositeTask task = TaskDAO.getTask(taskName);
 					if (task != null) {
 						GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
@@ -109,7 +107,7 @@ public class AddDocumentsServlet extends HttpServlet {
 				String consumerKey = "anonymous";
 				String consumerSecret = "anonymous";
 				String scope = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-				String callback = "http://vrchlpet-projectcontrol.appspot.com/documentscallbackservlet";
+				String callback = "http://vrchlpet-pc.appspot.com/documentscallbackservlet";
 
 				GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
 				oauthParameters.setOAuthConsumerKey(consumerKey);

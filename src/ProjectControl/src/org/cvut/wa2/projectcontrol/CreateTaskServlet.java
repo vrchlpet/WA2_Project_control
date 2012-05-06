@@ -2,22 +2,13 @@ package org.cvut.wa2.projectcontrol;
 
 import java.io.IOException;
 import java.util.List;
-
-import javax.jdo.JDOObjectNotFoundException;
-import javax.jdo.PersistenceManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.cvut.wa2.projectcontrol.DAO.PMF;
 import org.cvut.wa2.projectcontrol.DAO.TeamDAO;
-import org.cvut.wa2.projectcontrol.entities.CompositeTask;
-import org.cvut.wa2.projectcontrol.entities.DocumentsToken;
 import org.cvut.wa2.projectcontrol.entities.Team;
-
-import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 

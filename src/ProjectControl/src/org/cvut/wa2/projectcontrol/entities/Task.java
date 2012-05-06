@@ -1,9 +1,5 @@
 package org.cvut.wa2.projectcontrol.entities;
 
-import java.util.Date;
-
-import javax.jdo.annotations.Discriminator;
-import javax.jdo.annotations.DiscriminatorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;

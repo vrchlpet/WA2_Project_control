@@ -8,13 +8,14 @@ public final class PMF {
     private static final PersistenceManagerFactory pmfInstance =
         JDOHelper.getPersistenceManagerFactory("transactions-optional");
     
-    private static PersistenceManager instance;
+    private static PersistenceManager pm = null;
 
     private PMF() {}
 
     public static PersistenceManager get() {
-    	if ( instance == null)
-    		instance = pmfInstance.getPersistenceManager();
-        return instance;
+    	if (pm == null)
+    		pm = pmfInstance.getPersistenceManager();
+    	
+    	return pm;
     }
 }

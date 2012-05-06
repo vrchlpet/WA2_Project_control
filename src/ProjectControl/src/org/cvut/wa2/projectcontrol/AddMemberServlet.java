@@ -14,10 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cvut.wa2.projectcontrol.entities.ContactsToken;
+import org.cvut.wa2.projectcontrol.entities.TMember;
 import org.cvut.wa2.projectcontrol.entities.Team;
-import org.cvut.wa2.projectcontrol.entities.TeamMember;
 
 import org.cvut.wa2.projectcontrol.DAO.PMF;
+import org.cvut.wa2.projectcontrol.DAO.TeamDAO;
 
 
 import com.google.appengine.api.users.User;
@@ -52,7 +53,7 @@ public class AddMemberServlet extends HttpServlet{
 				
 				String teamName = req.getParameter("teamName");
 				if (teamName != null) {
-					Team team = pm.getObjectById(Team.class, teamName);
+					Team team = TeamDAO.getTeam(teamName);
 					
 					if (team != null) {
 						
@@ -77,15 +78,13 @@ public class AddMemberServlet extends HttpServlet{
 							result = new ArrayList<ContactEntry>(resultFeed.getEntries());
 							mails = new ArrayList<String>();
 							for (ContactEntry ce : result) {
-								if (ce.getNickname().toString().length() == 0)
-								for (Email em : ce.getEmailAddresses())
+								for (Email em : ce.getEmailAddresses()) {
 									mails.add(em.getAddress());
+								}
 							}
-							
-							/*
-							for (TeamMember tm : team.getMembers()) {
+							for (TMember tm : team.getMembers()) {
 								mails.remove(tm.getName());
-							}*/
+							}
 							
 						} 
 						catch (OAuthException e) {
@@ -96,11 +95,6 @@ public class AddMemberServlet extends HttpServlet{
 						}
 						// end get contact list
 						
-						for (TeamMember member : team.getMembers()) {
-							mails.remove(member.getName());
-						}
-						
-						List<TeamMember> teamMembers = team.getMembers();
 						req.setAttribute("teamName", teamName);
 						//req.setAttribute("teamMembers", teamMembers);
 			        	req.setAttribute("contacts", mails);
@@ -128,7 +122,7 @@ public class AddMemberServlet extends HttpServlet{
 				String consumerKey = "anonymous";
 				String consumerSecret = "anonymous";
 				String scope = "https://www.google.com/m8/feeds";
-				String callback = "http://vrchlpet-projectcontrol.appspot.com/callbackservlet";
+				String callback = "http://vrchlpet-pc.appspot.com/callbackservlet";
 
 				GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();	
 				oauthParameters.setOAuthConsumerKey(consumerKey);
@@ -148,9 +142,6 @@ public class AddMemberServlet extends HttpServlet{
 				} catch (OAuthException ee) {
 					ee.printStackTrace();
 				}
-			}
-			finally {
-				pm.close();
 			}
 			
 			

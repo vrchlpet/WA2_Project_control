@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <datastore-indexes
   autoGenerate="true">
-    <datastore-index kind="TeamMember" ancestor="true" source="manual">
+    <datastore-index kind="TMember" ancestor="true" source="manual">
+        <property name="members_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="DocumentEntity" ancestor="true" source="manual">
+        <property name="docEntity_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="Task" ancestor="true" source="manual">
+        <property name="subtasks_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+    
+    
+    <!-- <datastore-index kind="TeamMember" ancestor="true" source="manual">
         <property name="members_INTEGER_IDX" direction="asc"/>
     </datastore-index>
     <datastore-index kind="AccessToken" ancestor="true" source="manual">
@@ -15,5 +26,5 @@
     </datastore-index>
     <datastore-index kind="DocumentEntity" ancestor="true" source="manual">
         <property name="docEntity_INTEGER_IDX" direction="asc"/>
-    </datastore-index>
+    </datastore-index> -->
 </datastore-indexes>

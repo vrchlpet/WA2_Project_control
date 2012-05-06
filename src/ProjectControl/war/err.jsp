@@ -1,4 +1,4 @@
-<%@page import="org.cvut.wa2.projectcontrol.entities.TeamMember"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.cvut.wa2.projectcontrol.entities.Team"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

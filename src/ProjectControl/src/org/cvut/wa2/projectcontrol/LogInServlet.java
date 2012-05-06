@@ -14,7 +14,7 @@ public class LogInServlet extends HttpServlet {
 			throws IOException {
 		
 		UserService userService = UserServiceFactory.getUserService();
-        resp.sendRedirect(userService.createLoginURL("http://vrchlpet-projectcontrol.appspot.com"));
+        resp.sendRedirect(userService.createLoginURL("http://vrchlpet-pc.appspot.com"));
 
 	}
 

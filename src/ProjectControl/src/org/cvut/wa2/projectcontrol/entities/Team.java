@@ -1,6 +1,7 @@
 package org.cvut.wa2.projectcontrol.entities;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -17,12 +18,12 @@ public class Team {
 	@Persistent
 	private String name;
 	
-	@Persistent(mappedBy = "team")
-	private ArrayList<TeamMember> members;
+	@Persistent(mappedBy="team")
+	private List<TMember> members;
 
 	public Team() {}
 
-	public Team(Key key, String name, ArrayList<TeamMember> members) {
+	public Team(Key key, String name, List<TMember> members) {
 		super();
 		this.teamKey = key;
 		this.name = name;
@@ -39,11 +40,11 @@ public class Team {
 		this.teamKey = teamKey;
 	}
 
-	public ArrayList<TeamMember> getMembers() {
+	public List<TMember> getMembers() {
 		return members;
 	}
 
-	public void setMembers(ArrayList<TeamMember> members) {
+	public void setMembers(List<TMember> members) {
 		this.members = members;
 	}
 

@@ -13,7 +13,6 @@ import org.cvut.wa2.projectcontrol.entities.DocumentEntity;
 import org.cvut.wa2.projectcontrol.entities.Status;
 import org.cvut.wa2.projectcontrol.entities.Task;
 import org.cvut.wa2.projectcontrol.entities.Team;
-import org.cvut.wa2.projectcontrol.entities.TeamMember;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -64,7 +63,6 @@ public class TaskDAO {
 		PersistenceManager pm = PMF.get();
 		
 		try {
-			Key key1 = KeyFactory.createKey(CompositeTask.class.getSimpleName(),taskName);
 			task = pm.getObjectById(CompositeTask.class, taskName);
 		} catch (JDOObjectNotFoundException e) {
 			return null;
@@ -130,10 +128,9 @@ public class TaskDAO {
 		
 		Query q = null;
 		List<CompositeTask> tasks = null;
-		
+		PersistenceManager pm = PMF.get();
+		q  = pm.newQuery(CompositeTask.class);
 		try {
-			PersistenceManager pm = PMF.get();
-			q  = pm.newQuery(CompositeTask.class);
 			tasks = (List<CompositeTask>) q.execute();
 		
 		} finally {
@@ -168,31 +165,7 @@ public class TaskDAO {
 		
 		PersistenceManager manager = PMF.get();
 		manager.makePersistent(ct);
-		
 		return ct;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
